@@ -1,0 +1,55 @@
+<ng-container *ngIf="products.length !=0">
+    <div class="w-screen h-screen bg-slate-200">
+          <div class="text-center w-[90rem] mt-[2rem] ml-[15rem] h-auto absolute">
+            <table style="border:2px solid black;" class=" w-[90rem] text-black">
+                <thead style="border:2px solid black;" >
+                    <tr>
+                        <th >Sr.No</th>
+                        <th >Product Name</th>
+                        <th >Product Image</th>
+                        <th >Description</th>
+                        <th >Price</th>
+                        <th >Quatnity</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+             </thead>
+             <tbody>
+                    <tr class="text-center"  *ngFor="let item of products; let i = index">
+                        <td class="w-[10rem] h-[5rem] " >{{i+1}}</td>
+                        <td class="w-[200px]">{{item.title}}</td>
+                        <td  class="flex justify-center"><img class="mix-blend-darken  w-[5rem] h-auto" src="{{item.image}}" alt=""></td>
+                        <td class="w-[250px]  overflow-hidden">
+                        <div class="w-[250px] overflow-hidden truncate">{{item.description}}</div>
+                        </td>
+                        <td>{{item.price}}</td>
+                        <td>{{1}}
+                          <!-- <div class="flex flex-col gap-3">
+                            <button class="w-10 h-5 bg-teal-700 text-white rounded-sm mt-0">+</button>
+                            <button class="w-10 h-5 bg-teal-700 text-white rounded-sm mt-0">-</button>
+                          </div> -->
+
+                        </td>
+                        <td>{{item.total}}</td>
+                        <td><button (click)="removeItems(item)" mat-raised-button color="warn">Delete</button></td>
+                    </tr>
+            </tbody>
+            </table>
+          </div>
+    </div>
+</ng-container> 
+
+ <ng-container *ngIf="products.length ==0">
+    <div class="flex w-screen h-screen relative">
+        <div class="w-[100rem] h-[40rem]  border border-black absolute top-[8rem] left-[9rem]">
+            <h1 class="font-bold flex justify-center">My Cart</h1>
+            <h1 class="flex justify-center items-center">Your cart is empty!</h1>
+            <h4 class="justify-center flex items-center ">Add item to it now</h4>
+            <img src="https://rukminim2.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90" class="w-[20rem] mt-[5rem] ml-[40rem] object-cover flex justify-center items-center">
+            <button mat-raised-button color="warn" class="button-shop " (click)="shop()">Shop now</button>
+        </div>
+     </div>
+</ng-container>
+
+
+<router-outlet></router-outlet>

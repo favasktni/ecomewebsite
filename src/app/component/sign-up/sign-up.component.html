@@ -1,0 +1,29 @@
+
+<div class="flex items-center  flex-col w-screen h-screen justify-center relative bg-stone-600">
+<div class="w-[50rem] h-[30rem] bg-emerald-900 shadow-2xl  rounded-3xl flex justify-center flex-col items-center">
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" >
+    <mat-tab label="Signin">
+      <mat-card class="card w-[30rem] ">
+       <form [formGroup]="LoginForm" class="flex flex-col text-white" (ngSubmit)="OnSubmit(LoginForm)">
+        <mat-form-field appearance="outline">
+          <label>Email</label>
+          <input matInput placeholder="Email" formControlName="email">
+          <mat-error>Invalid Email</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+          <label>Password</label>
+          <input matInput placeholder="Password" [type]="hide?'password':'text'" class="" formControlName="password">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+         <mat-error>Invalid Password</mat-error>
+        </mat-form-field>
+       <button mat-raised-button color="primary" class="w-[8rem]" (click)="add()">Sign In</button>
+      </form>
+     </mat-card>
+    </mat-tab>
+   <mat-tab label="Signup">pending....</mat-tab>
+  </mat-tab-group>     
+</div>
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,71 @@
+
+<section class="w-screen h-screen">
+    <div class="">
+        <div class="flex h-[6rem] mt-0 bg-teal-600  ">    
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="red" class="w-8 h-8 mt-8 ml-10">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                 </svg>
+                 <p class="text-[1.2rem] absolute top-[2.4rem] left-[5rem]">ShopCart</p> 
+                <nav class="font-sans grid-flow-col gap-[7rem] grid mt-10 ml-[14rem]">
+                <a>Categories</a>
+                <a>Deals</a>
+                <a>What's New</a>
+                <input type="text" class="w-[30rem] h-10 mt-[-.5rem] rounded-sm outline-none bg-gray-100 pl-3" placeholder="Search for product">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="gray" class="w-5 h-5 rotate-2 absolute  ml-[60rem]">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                  </svg>
+                <a (click)="add()" routerLink="signup">Signup</a>
+                <a>Account</a>
+                <a routerLink="cart" (click)="cart()">Cart <span class="text-sm text-red-800">{{totalItem}}</span>
+                 <!-- <img src="https://endlessicons.com/wp-content/uploads/2012/11/shopping-cart-icon-614x460.png" class="w-12 h-12 mt-[-2.2rem]  ml-[1.5rem]"> -->
+                </a>
+            </nav>
+        </div>
+        <!-- ******** -->
+        <div class=" flex bg-rose-900 w-[100rem] mt-10 ml-[10rem]  h-[25rem] rounded-2xl shadow-xl sm:"> 
+            <!-- <h1 >
+               
+            </h1> -->
+            <p class="absolute font-bold text-[3.5rem] animate-pulse left-[15rem]  top-[18rem] text-green-500">Grab Upto 50% Of On <br class="flex mt-[2rem]"> Selected Products</p>
+            <button class=" w-[10rem] rounded-full text-white mt-[18rem] absolute ml-[10rem]  h-[4rem] bg-green-700 hover:bg-orange-500">Buy Now</button>
+
+            <img src="../assets/bgimg.png" class="w-[25rem]  h-[25rem] ml-[65rem]  object-cover">
+        </div>
+        <!-- ********************* -->
+        <!-- <div class="flex">
+          <nav class="text-sm grid grid-flow-col gap-[1rem] ml-[10rem] mt-12">
+            <a class="w-[8rem] h-[3rem] bg-transparent border-black border-2 justify-center flex items-center rounded-full hover:bg-orange-500 hover:text-white hover:border-none ">Headphone</a>
+            <a class="w-[8rem] h-[3rem] bg-transparent border-black border-2 justify-center flex items-center rounded-full hover:bg-orange-500 hover:text-white hover:border-none ">Price</a>
+            <a class="w-[8rem] h-[3rem] bg-transparent border-black border-2 justify-center flex items-center rounded-full hover:bg-orange-500 hover:text-white hover:border-none ">Review</a>
+            <a class="w-[8rem] h-[3rem] bg-transparent border-black border-2 justify-center flex items-center rounded-full hover:bg-orange-500 hover:text-white hover:border-none ">Color</a>
+            <a class="w-[8rem] h-[3rem] bg-transparent border-black border-2 justify-center flex items-center rounded-full hover:bg-orange-500 hover:text-white hover:border-none ">Material</a>
+            <a class="w-[8rem] h-[3rem] bg-transparent border-black border-2 justify-center flex items-center rounded-full hover:bg-orange-500 hover:text-white hover:border-none ">Offer</a>
+          </nav>
+        </div> -->
+        <!-- ******** -->
+    </div>
+
+    <section>
+        <div class="mt-[5rem] grid grid-cols-4  gap-y-16 p-10 gap-x-11   ">
+            <ul  *ngFor="let i of productArray" class="grid  h-[25rem]  hover:bg-gray-200 hover:shadow-2xl rounded-xl">
+                <li><img class="w-[10rem] h-[8rem] object-contain mt-3 mx-auto mix-blend-darken " src="{{i.image}}"/></li>
+                     <li class="truncate overflow-hidden text-blue-600 font-bold" >{{i.title}}</li>
+                    <p class="text-black text-sm"> Price : $ 
+                        <a class="text-gray-500">{{i.price}}</a>
+                    </p>
+                     <li class="truncate overflow-hidden">{{i.description}}</li> 
+                    <li>{{i.category}}</li>
+                    <li>{{i.rate}}</li>
+                    <li>{{i.count}}</li>
+                <button class=" flex justify-center items-center  w-[15rem] h-[3rem] ml-[6rem] text-white bg-blue-800 rounded-full hover:bg-green-700 hover:rounded-full" (click)="addtocart(i)">Add to cart</button>
+            
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="black" class="w-6 h-6 absolute mt-[21rem] ml-[22.5rem] hover:animate-ping">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                  </svg>
+
+                </ul> 
+        </div>
+    </section>
+
+</section>
+<router-outlet></router-outlet>
